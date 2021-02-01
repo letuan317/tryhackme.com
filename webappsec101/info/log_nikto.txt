@@ -1,0 +1,24 @@
+- Nikto v2.1.6/2.1.5
++ Target Host: 10.10.24.18
++ Target Port: 80
++ GET Retrieved x-powered-by header: PHP/5.5.9-1ubuntu4.24
++ GET The anti-clickjacking X-Frame-Options header is not present.
++ GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ GET The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ GET Cookie PHPSESSID created without the httponly flag
++ HEAD Apache/2.4.7 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ ZFBUHRXB Web Server returns a valid response with junk HTTP methods, this may cause false positives.
+- Nikto v2.1.6/2.1.5
++ No web server found on 10.10.24.18:80
+- Nikto v2.1.6/2.1.5
++ No web server found on 10.10.24.18:80
+- Nikto v2.1.6/2.1.5
++ Target Host: 10.10.68.138
++ Target Port: 80
++ GET Retrieved x-powered-by header: PHP/5.5.9-1ubuntu4.24
++ GET The anti-clickjacking X-Frame-Options header is not present.
++ GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ GET The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ GET Cookie PHPSESSID created without the httponly flag
++ HEAD Apache/2.4.7 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ AUHIJYFW Web Server returns a valid response with junk HTTP methods, this may cause false positives.
