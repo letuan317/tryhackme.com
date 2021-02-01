@@ -1,0 +1,162 @@
+####################################
+# Uniscan project                  #
+# http://uniscan.sourceforge.net/  #
+####################################
+V. 6.3
+
+
+Scan date: 31-1-2021 16:51:48
+===================================================================================================
+| Domain: http://10.10.152.40/
+| Server: Apache/2.4.18 (Ubuntu)
+| IP: 10.10.152.40
+===================================================================================================
+|
+| Directory check:
+===================================================================================================
+|                                                                                                   
+| File check:
+| [+] CODE: 200 URL: http://10.10.152.40/index.html
+| [+] CODE: 200 URL: http://10.10.152.40/robots.txt
+===================================================================================================
+|
+| Check robots.txt:
+| [+] #
+| [+] # "$Id: robots.txt 3494 2003-03-19 15:37:44Z mike $"
+| [+] #
+| [+] #   This file tells search engines not to index your CUPS server.
+| [+] #
+| [+] #   Copyright 1993-2003 by Easy Software Products.
+| [+] #
+| [+] #   These coded instructions, statements, and computer programs are the
+| [+] #   property of Easy Software Products and are protected by Federal
+| [+] #   copyright law.  Distribution and use rights are outlined in the file
+| [+] #   "LICENSE.txt" which should have been included with this file.  If this
+| [+] #   file is missing or damaged please contact Easy Software Products
+| [+] #   at:
+| [+] #
+| [+] #       Attn: CUPS Licensing Information
+| [+] #       Easy Software Products
+| [+] #       44141 Airport View Drive, Suite 204
+| [+] #       Hollywood, Maryland 20636-3111 USA
+| [+] #
+| [+] #       Voice: (301) 373-9600
+| [+] #       EMail: cups-info@cups.org
+| [+] #         WWW: http://www.cups.org
+| [+] #
+| [+] 
+| [+] User-agent: *
+| [+] Disallow: /
+| [+] 
+| [+] 
+| [+] Disallow: /openemr-5_0_1_3 
+| [+] #
+| [+] # End of "$Id: robots.txt 3494 2003-03-19 15:37:44Z mike $".
+| [+] #
+|
+| Check sitemap.xml:
+===================================================================================================
+|
+| Crawler Started:
+| Plugin name: Upload Form Detect v.1.1 Loaded.
+| Plugin name: External Host Detect v.1.2 Loaded.
+| Plugin name: Web Backdoor Disclosure v.1.1 Loaded.
+| Plugin name: Timthumb <= 1.32 vulnerability v.1 Loaded.
+| Plugin name: Code Disclosure v.1.1 Loaded.
+| Plugin name: E-mail Detection v.1.1 Loaded.
+| Plugin name: FCKeditor upload test v.1 Loaded.
+| Plugin name: phpinfo() Disclosure v.1 Loaded.
+| [+] Crawling finished, 5 URL's found!
+|
+| File Upload Forms:
+|
+| External hosts:
+| [+] External Host Found: http://manpages.debian.org
+| [+] External Host Found: https://bugs.launchpad.net
+| [+] External Host Found: http://httpd.apache.org
+|
+| Web Backdoors:
+|
+| Timthumb:
+|
+| Source Code Disclosure:
+|
+| E-mails:
+| [+] E-mail Found: cups-info@cups.org
+|
+| FCKeditor File Upload:
+|
+| PHPinfo() Disclosure:
+|
+| Ignored Files: 
+===================================================================================================
+| Dynamic tests:
+| Plugin name: Learning New Directories v.1.2 Loaded.
+| Plugin name: FCKedior tests v.1.1 Loaded.
+| Plugin name: Timthumb <= 1.32 vulnerability v.1 Loaded.
+| Plugin name: Find Backup Files v.1.2 Loaded.
+| Plugin name: Blind SQL-injection tests v.1.3 Loaded.
+| Plugin name: Local File Include tests v.1.1 Loaded.
+| Plugin name: PHP CGI Argument Injection v.1.1 Loaded.
+| Plugin name: Remote Command Execution tests v.1.1 Loaded.
+| Plugin name: Remote File Include tests v.1.2 Loaded.
+| Plugin name: SQL-injection tests v.1.2 Loaded.
+| Plugin name: Cross-Site Scripting tests v.1.2 Loaded.
+| Plugin name: Web Shell Finder v.1.3 Loaded.
+| [+] 0 New directories added
+|                                                                                                   
+|                                                                                                   
+| FCKeditor tests:
+|                                                                                                   
+|                                                                                                   
+| Timthumb < 1.33 vulnerability:
+|                                                                                                   
+|                                                                                                   
+| Backup Files:
+|                                                                                                   
+|                                                                                                   
+| Blind SQL Injection:
+|                                                                                                   
+|                                                                                                   
+| Local File Include:
+|                                                                                                   
+|                                                                                                   
+| PHP CGI Argument Injection:
+|                                                                                                   
+|                                                                                                   
+| Remote Command Execution:
+|                                                                                                   
+|                                                                                                   
+| Remote File Include:
+|                                                                                                   
+|                                                                                                   
+| SQL Injection:
+|                                                                                                   
+|                                                                                                   
+| Cross-Site Scripting (XSS):
+|                                                                                                   
+|                                                                                                   
+| Web Shell Finder:
+===================================================================================================
+| Static tests:
+| Plugin name: Local File Include tests v.1.1 Loaded.
+| Plugin name: Remote Command Execution tests v.1.1 Loaded.
+| Plugin name: Remote File Include tests v.1.1 Loaded.
+|                                                                                                   
+|                                                                                                   
+| Local File Include:
+|                                                                                                   
+|                                                                                                   
+| Remote Command Execution:
+|                                                                                                   
+|                                                                                                   
+| Remote File Include:
+===================================================================================================
+Scan end date: 31-1-2021 16:56:0
+
+
+
+HTML report saved in: report/10.10.152.40.html
+
+
+

