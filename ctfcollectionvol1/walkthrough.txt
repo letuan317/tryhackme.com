@@ -1,0 +1,4 @@
+strings Findme.jpg | grep THM
+
+### extrach hex from png
+xxd --palin spoil.png > myhexdump.txt
